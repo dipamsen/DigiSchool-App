@@ -14,11 +14,8 @@ Created with React Native / Expo.
 
 ## Run locally
 
-<<<<<<< HEAD
 ## Contribute
 
-=======
->>>>>>> b490750d48560e50b863cbcc31524b8dc70dd93b
 - Clone this repo to your device
 - Get a Firebase project running and do as `config.js`
 - run `npm i`
