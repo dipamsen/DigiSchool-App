@@ -8,7 +8,7 @@ Created with React Native / Expo.
 
 ## Run locally
 
-- Clone this repo
-- Get a Firebase project running and fix `config.js` (instructions in `config-sample`)
-- run `npm install`
+- Clone this repo to your device
+- Get a Firebase project running and do as `config.js`
+- run `npm i`
 - run `expo start`
