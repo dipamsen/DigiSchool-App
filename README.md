@@ -6,9 +6,9 @@ Created with React Native / Expo.
 
 @TODO
 
-> This app is a submission for the Silicon Valley Challenge by WhiteHatJr. 
+## Run locally
 
-## Contribute
-
-- Clone this repo to your device
-- Get a Firebase project running and fix `config.js`
+- Clone this repo
+- Get a Firebase project running and fix `config.js` (instructions in `config-sample`)
+- run `npm install`
+- run `expo start`
