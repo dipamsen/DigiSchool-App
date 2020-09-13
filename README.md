@@ -12,7 +12,7 @@ Created with React Native / Expo.
 * Exposure to useful websites in single umbrella - E-Lab, E-Learn, E-Library, E-Dictionary
 </details>
 
-> This app is a submission for the Silicon Valley Challenge by WhiteHatJr. 
+## Run locally
 
 ## Contribute
 
