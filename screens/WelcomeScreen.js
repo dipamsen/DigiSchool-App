@@ -14,22 +14,7 @@ import Logo from '../components/Logo';
 import Name from '../components/LogoType';
 
 export default class WelcomeScreen extends React.Component {
-  // comdponentDidMount() {
-  //   if (auth.currentUser) {
-  //     if (auth.currentUser.displayName[0] == 's')
-  //       this.props.navigation.navigate('MainApp');
-  //     if (auth.currentUser.displayName[0] == 't')
-  //       this.props.navigation.navigate('TeachersApp');
-  //   }
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       if (user.displayName[0] == 's')
-  //         this.props.navigation.navigate('MainApp');
-  //       if (user.displayName[0] == 't')
-  //         this.props.navigation.navigate('TeachersApp');
-  //     }
-  //   });
-  // }
+
   render() {
     return (
       <View style={styles.container}>

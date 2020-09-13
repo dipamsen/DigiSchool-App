@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, LogBox } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -18,6 +18,7 @@ import CustomDrawerTchr from './components/CustomDrawerTchr';
 import Chatter from './screens/Chatter';
 import BrainGames from './screens/BrainGames'
 
+console.disableYellowBox = true;
 const MainApp = createAppContainer(
   createDrawerNavigator(
     {

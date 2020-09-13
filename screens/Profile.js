@@ -49,9 +49,11 @@ export default class Profile extends React.Component {
         ImagePicker.launchImageLibraryAsync({
           allowsEditing: true,
           aspect: [1, 1]
-        }).then(async ({ uri, name }) => {
+        }).then(async (fileData) => {
+          const { uri, name } = fileData
+          console.log(fileData);
           if (!uri) return this.setState({ uploading: "noo" })
-          let fileStore = storage.ref(`/profilePics/${this.state.type.toLowerCase()}s/${this.state.details.name}.${name.split('.').pop()}`)
+          let fileStore = storage.ref(`/profilePics/${this.state.type.toLowerCase()}s/${this.state.details.name}.${uri.split('.').pop()}`)
           let file = await (await fetch(uri)).blob()
           let uploadManager = fileStore.put(file);
           uploadManager.on(
