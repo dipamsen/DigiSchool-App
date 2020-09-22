@@ -8,6 +8,7 @@ import firebase from 'firebase';
 import { createStackNavigator } from 'react-navigation-stack';
 import Submit from './Submit Assessment';
 import * as Linking from 'expo-linking';
+import { LinearGradient } from 'expo-linear-gradient';
 
 class StudyMaterials extends React.Component {
   constructor() {
@@ -108,69 +109,76 @@ class StudyMaterials extends React.Component {
             />
           }>
           {this.state.allResources.map((v, i) => (
-            <Card style={{ margin: 10 }}>
-              <Card.Title
-                left={() => <Icon name={v.type == 'hw' && !this.state.iHaveSubmitted.map(q => q.forResource).includes(v.id) ? "assignment-late" : this.state.iHaveSubmitted.map(q => q.forResource).includes(v.id) ? "assignment-turned-in" : "assignment"} color="green" />}
-                title={v.name}
-                titleStyle={{ fontFamily: 'Head' }}
-                subtitle={v.teacher}
-              />
-              <Card.Content>
-                <Text>{`Grade ${v.class}: ${v.subject} - ${v.chapter}`}</Text>
-                <Text>
-                  {v.type == 'hw'
-                    ? 'Assignment'
-                    : v.type == 'rd'
-                      ? 'Notes'
-                      : null}
-                </Text>
-              </Card.Content>
-              <Card.Actions style={{ flexDirection: 'column' }}>
-                <Button
-                  onPress={() => {
-                    this.openResource(v.path);
-                  }}>
-                  Open {v.type == 'hw' ? "Assignment" : null}
-                </Button>
-                {v.type == 'hw' ? (
-                  this.state.iHaveSubmitted.map(q => q.forResource).includes(v.id) ? (
-                    <>
-                      <Button
-                        onPress={() => {
-                          db.collection('submissions')
-                            .where('forResource', '==', v.id)
-                            .where(
-                              'student',
-                              '==',
-                              auth.currentUser.email
-                            )
-                            .get()
-                            .then((snapshot) => {
-                              this.openResource(snapshot.docs.map(doc => doc.data())[0].path);
-                            });
-                        }}>
-                        Preview your Submission
+            <Card style={{ margin: 16, elevation: 10 }}>
+              <LinearGradient
+                // Background Linear Gradient
+                colors={['#58FA66', '#92f590']}
+              // start={[0, 0]}
+              // end={[0.9, 0.9]}
+              >
+                <Card.Title
+                  left={() => <Icon name={v.type == 'hw' && !this.state.iHaveSubmitted.map(q => q.forResource).includes(v.id) ? "assignment-late" : this.state.iHaveSubmitted.map(q => q.forResource).includes(v.id) ? "assignment-turned-in" : "assignment"} />}
+                  title={v.name}
+                  titleStyle={{ fontFamily: 'Head' }}
+                  subtitle={v.teacher}
+                />
+                <Card.Content>
+                  <Text>{`Grade ${v.class}: ${v.subject} - ${v.chapter}`}</Text>
+                  <Text>
+                    {v.type == 'hw'
+                      ? 'Assignment'
+                      : v.type == 'rd'
+                        ? 'Notes'
+                        : null}
+                  </Text>
+                </Card.Content>
+                <Card.Actions style={{ flexDirection: 'column' }}>
+                  <Button
+                    onPress={() => {
+                      this.openResource(v.path);
+                    }}>
+                    Open {v.type == 'hw' ? "Assignment" : null}
+                  </Button>
+                  {v.type == 'hw' ? (
+                    this.state.iHaveSubmitted.map(q => q.forResource).includes(v.id) ? (
+                      <>
+                        <Button
+                          onPress={() => {
+                            db.collection('submissions')
+                              .where('forResource', '==', v.id)
+                              .where(
+                                'student',
+                                '==',
+                                auth.currentUser.email
+                              )
+                              .get()
+                              .then((snapshot) => {
+                                this.openResource(snapshot.docs.map(doc => doc.data())[0].path);
+                              });
+                          }}>
+                          Preview your Submission
                       </Button>
-                      <Divider />
-                      <Button
-                        onPress={() => {
-                          let ind = this.state.iHaveSubmitted.map(w => w.forResource).indexOf(v.id)
-                          const fdbc = this.state.iHaveSubmitted[ind].feedback
-                          fdbc ? Alert.alert("Teacher's Feedback", fdbc) : Alert.alert("No Feedback Available.")
-                        }}>
-                        Teacher's Feedback
+                        <Divider />
+                        <Button
+                          onPress={() => {
+                            let ind = this.state.iHaveSubmitted.map(w => w.forResource).indexOf(v.id)
+                            const fdbc = this.state.iHaveSubmitted[ind].feedback
+                            fdbc ? Alert.alert("Teacher's Feedback", fdbc) : Alert.alert("No Feedback Available.")
+                          }}>
+                          Teacher's Feedback
                       </Button>
-                    </>
-                  ) : (
-                      <Button
-                        onPress={() => {
-                          this.submitAssessment(v.id);
-                        }}>
-                        Submit Assignment
-                      </Button>
-                    )
-                ) : null}
-              </Card.Actions>
+                      </>
+                    ) : (
+                        <Button
+                          onPress={() => {
+                            this.submitAssessment(v.id);
+                          }}>
+                          Submit Assignment
+                        </Button>
+                      )
+                  ) : null}
+                </Card.Actions>
+              </LinearGradient>
             </Card>
           ))}
         </ScrollView>

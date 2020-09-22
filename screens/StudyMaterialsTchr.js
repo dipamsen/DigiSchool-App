@@ -92,31 +92,38 @@ class StudyMaterials extends React.Component {
             fontSize: 26, fontFamily: "Head", textAlign: "center"
           }}>Your Resources</Text>
           {this.state.allResources.map((v, i) => (
-            <Card style={{ margin: 10 }}>
-              <Card.Title
-                left={() => <Icon name="assignment" color="green" />}
-                title={v.name}
-                titleStyle={{ fontFamily: 'Head' }}
-                subtitle={`Grade ${v.class} - ${v.subject} - ${v.chapter}`}
-              />
-              <Card.Content>
-                <Text>Type: {lol[v.type]}</Text>
-              </Card.Content>
-              <Card.Actions>
-                <Button onPress={() => {
-                  this.openResource(v.path)
-                }}>Open</Button>
-                {v.type == "hw" ?
-                  <Button
-                    onPress={() => {
-                      navigate('Submissions', {
-                        docID: v.id,
-                      });
-                    }}
-                  >
-                    Check Submissions
+            <Card style={{ margin: 16, elevation: 10 }}>
+              <LinearGradient
+                // Background Linear Gradient
+                colors={['#58FA66', '#92f590']}
+              // start={[0, 0]}
+              // end={[0.9, 0.9]}
+              >
+                <Card.Title
+                  left={() => <Icon name="assignment" color="green" />}
+                  title={v.name}
+                  titleStyle={{ fontFamily: 'Head' }}
+                  subtitle={`Grade ${v.class} - ${v.subject} - ${v.chapter}`}
+                />
+                <Card.Content>
+                  <Text>Type: {lol[v.type]}</Text>
+                </Card.Content>
+                <Card.Actions>
+                  <Button onPress={() => {
+                    this.openResource(v.path)
+                  }}>Open</Button>
+                  {v.type == "hw" ?
+                    <Button
+                      onPress={() => {
+                        navigate('Submissions', {
+                          docID: v.id,
+                        });
+                      }}
+                    >
+                      Check Submissions
                 </Button> : null}
-              </Card.Actions>
+                </Card.Actions>
+              </LinearGradient>
             </Card>
           ))}
         </ScrollView>

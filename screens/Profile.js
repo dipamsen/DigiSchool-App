@@ -6,6 +6,7 @@ import { Icon } from 'react-native-elements'
 import firebase from 'firebase';
 import { db, auth, storage } from '../config';
 import * as ImagePicker from 'expo-image-picker'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default class Profile extends React.Component {
   constructor() {
@@ -74,7 +75,17 @@ export default class Profile extends React.Component {
   }
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <LinearGradient
+          colors={["#fff", "#2A2A72", "#009FFD"]}
+          style={{
+            position: "absolute",
+            width: "120%",
+            height: 280,
+            borderRadius: 450,
+            top: -80
+          }}
+        />
         <Head navigation={this.props.navigation} />
         <Portal>
           <Dialog dismissable={false} visible={this.state.uploading !== "noo"} style={{ width: '70%', height: '60%', alignSelf: "center", justifyContent: 'center' }}>
@@ -94,10 +105,10 @@ export default class Profile extends React.Component {
             }
           </Dialog>
         </Portal>
-        <ScrollView style={{ width: "100%" }} contentContainerStyle={{ alignItems: "center" }}>
+        <ScrollView style={{ width: "100%", marginTop: 38 }} contentContainerStyle={{ alignItems: "center" }}>
           {this.state.uri ?
             <Image source={{ uri: this.state.uri }} style={{ width: 120, height: 120, borderRadius: 60 }} /> :
-            <View style={{ borderWidth: 1, borderRadius: 80, margin: 8 }}>
+            <View style={{ borderWidth: 1, borderRadius: 80, margin: 3, backgroundColor: "#000" }}>
               <Icon
                 name={this.state.type == "Teacher" ? "chalkboard-teacher" : "user"}
                 reverse
@@ -116,7 +127,7 @@ export default class Profile extends React.Component {
           </Text>
           <Text style={{ fontSize: 18 }}>{this.state.details.username ? `@${this.state.details.username}` : ""}</Text>
           <Text style={{ fontSize: 16 }}>{this.state.type}</Text>
-          <Text style={{ fontSize: 16 }}>{this.state.type[0] == "T" ? `Classes: ${this.state.details.classes.join(", ")}\nSubject: ${this.state.details.subject || ""}` : null}</Text>
+          <Text style={{ fontSize: 16 }}>{this.state.type[0] == "T" ? `Classes: ${this.state.details.classes.join(", ")}\nSubject: ${this.state.details.subject || ""}` : `Grade ${this.state.details.class || ""}`}</Text>
           <View style={{ margin: 10, width: '100%', justifyContent: 'center', alignItems: "center", flexDirection: "row" }}>
             <View style={{ flex: 1, margin: 10 }}><Text style={{ fontFamily: 'Body-Bold', width: '94%' }}>Profile Photo</Text>
               {this.state.uri ? <Image source={{ uri: this.state.uri }} /> : <Text style={{ width: "94%" }}>No Photo Available</Text>}</View>

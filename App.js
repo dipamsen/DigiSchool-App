@@ -25,25 +25,19 @@ const MainApp = createAppContainer(
       'Study Materials': {
         screen: StudyMaterials,
         navigationOptions: {
-          drawerIcon: <Icon name="book" type="font-awesome" />,
+          drawerIcon: ({ focused }) => <Icon name="book" type="font-awesome" color={focused ? "red" : "#000"} />,
         },
       },
       "Discussion Wall": {
         screen: Chatter,
         navigationOptions: {
-          drawerIcon: <Icon name="message" />
-        }
-      },
-      "Recreation": {
-        screen: BrainGames,
-        navigationOptions: {
-          drawerIcon: <Icon name="extension" />
+          drawerIcon: ({ focused }) => <Icon name="message" color={focused ? "red" : "#000"} />,
         }
       },
       Profile: {
         screen: Profile,
         navigationOptions: {
-          drawerIcon: <Icon name="user" type="font-awesome" />,
+          drawerIcon: ({ focused }) => <Icon name="user" type="font-awesome" color={focused ? "red" : "#000"} />,
         },
       },
     },
@@ -68,19 +62,20 @@ const TeachersApp = createAppContainer(
       'Your Resources': {
         screen: StudyMaterialsTchr,
         navigationOptions: {
-          drawerIcon: <Icon name="book" type="font-awesome" />,
+          drawerIcon: ({ focused }) => <Icon name="book" type="font-awesome" color={focused ? "red" : "#000"} />
+
         },
       },
       "Discussion Wall": {
         screen: Chatter,
         navigationOptions: {
-          drawerIcon: <Icon name="message" />
+          drawerIcon: ({ focused }) => <Icon name="message" color={focused ? "red" : "#000"} />,
         }
       },
       Profile: {
         screen: Profile,
         navigationOptions: {
-          drawerIcon: <Icon name="user" type="font-awesome" />,
+          drawerIcon: ({ focused }) => <Icon name="user" type="font-awesome" color={focused ? "red" : "#000"} />,
         },
       },
     },

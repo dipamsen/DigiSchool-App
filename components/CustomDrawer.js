@@ -59,10 +59,10 @@ export default class CustomDrawerContentComponent extends React.Component {
 
                 <Image
                   source={{ uri: auth.currentUser.photoURL }}
-                  style={{ width: 50, height: 50 }}
+                  style={{ width: 120, height: 120, borderRadius: 80 }}
                 /> : <Icon
                   name="user"
-                  reverse={true}
+                  reverse
                   reverseColor="#000"
                   type="font-awesome"
                   color="#fff"
