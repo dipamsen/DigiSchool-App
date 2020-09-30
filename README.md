@@ -11,9 +11,7 @@ Created with React Native / Expo.
 <li>Learn with Fun - Activities, Discussion Wall</li>
 </details>
 
-## Run locally
-
-## Contribute
+## Development
 
 - Clone this repo to your device
 - Get a Firebase project running and do as `config.js`
