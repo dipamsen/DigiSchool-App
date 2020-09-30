@@ -97,7 +97,7 @@ export default class TeacherLogin extends React.Component {
           .add({
             email: rEmail,
             name: rName,
-            classes: rClasses.map((v) => +v),
+            classes: rClasses.split(",").map((v) => +v),
             username: rUID,
           })
           .then((user) => {
@@ -122,6 +122,7 @@ export default class TeacherLogin extends React.Component {
                         });
                     });
                 }
+                this.props.navigation.navigate("TeachersApp")
                 return Alert.alert('Registration Successful.');
               });
             });
@@ -166,8 +167,7 @@ export default class TeacherLogin extends React.Component {
             }}
             onChangeText={(rSub) => this.setState({ rSub })}
             inputStyle={{ color: '#fff' }}
-            value={this.state.rClasses}
-            keyboardType="numeric"
+            value={this.state.rSub}
           />
           <Input
             label="Class"
@@ -180,7 +180,7 @@ export default class TeacherLogin extends React.Component {
             onChangeText={(rClasses) => this.setState({ rClasses })}
             inputStyle={{ color: '#fff' }}
             value={this.state.rClasses}
-            keyboardType="numeric"
+          // keyboardType="numeric"
           />
           <Input
             placeholder="Username"

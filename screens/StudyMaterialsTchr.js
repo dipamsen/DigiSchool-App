@@ -18,6 +18,7 @@ import Head from '../components/CustomHeader';
 import { db, auth, storage } from '../config';
 import firebase from 'firebase';
 import * as Linking from 'expo-linking'
+import { LinearGradient } from 'expo-linear-gradient';
 
 const lol = {
   rd: 'Notes',
@@ -81,6 +82,9 @@ class StudyMaterials extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Head navigation={this.props.navigation} />
+        <Text style={{
+          fontSize: 26, fontFamily: "Head", textAlign: "center"
+        }}>Your Resources</Text>
         <ScrollView
           refreshControl={
             <RefreshControl
@@ -88,9 +92,7 @@ class StudyMaterials extends React.Component {
               onRefresh={this.reload}
             />
           }>
-          <Text style={{
-            fontSize: 26, fontFamily: "Head", textAlign: "center"
-          }}>Your Resources</Text>
+
           {this.state.allResources.map((v, i) => (
             <Card style={{ margin: 16, elevation: 10 }}>
               <LinearGradient

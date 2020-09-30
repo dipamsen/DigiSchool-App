@@ -65,6 +65,7 @@ class StudyMaterials extends React.Component {
       });
   };
   componentDidMount() {
+    this.setState({ refreshing: true, allResources: [] });
     db.collection('studentsData')
       .where('email', '==', auth.currentUser.email)
       .get()
@@ -81,7 +82,10 @@ class StudyMaterials extends React.Component {
                   ...doc.data(),
                   id: doc.id,
                 })).sort((a, b) => b.date.toDate() - a.date.toDate()),
-              });
+              },
+                () => {
+                  this.setState({ refreshing: false })
+                });
             });
         });
       });
@@ -101,6 +105,7 @@ class StudyMaterials extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Head navigation={this.props.navigation} />
+        <Text style={{ fontFamily: "Head", fontSize: 24, textAlign: "center" }}>Study Materials</Text>
         <ScrollView
           refreshControl={
             <RefreshControl

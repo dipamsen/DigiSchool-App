@@ -175,11 +175,11 @@ export default class Uploader extends React.Component {
   };
   save = async () => {
     const { uri, name: acfname } = this.state.file;
-    const { type, class: cls, subject, chapter, fn: name } = this.state;
+    const { type, class: cls, subject, chapter, fn: name, user } = this.state;
     if (!(name && uri && type && cls && subject && chapter)) return Alert.alert("Error", "Please fill all fields.");
     this.setState({ uploading: true });
     let ref = storage.ref();
-    let filePath = `/teacherUploads/${name}.${acfname.split('.').pop()}`;
+    let filePath = `/teacherUploads/${user}/${name}.${acfname.split('.').pop()}`;
     let fileStore = ref.child(filePath);
     const file = await (await fetch(uri)).blob();
     const uploadTask = fileStore.put(file);
