@@ -13,9 +13,11 @@ Created with React Native / Expo.
 <li>Learn with Fun - Activities, Discussion Wall</li>
 </details>
 
-## Development
+## Run this Project
 
-- Clone this repo to your device
-- Get a Firebase project running and do as `config.js`
+- Clone this git repo to your device: `https://github.com/dipamsen/DigiSchool-App.git`
 - run `npm i`
 - run `expo start`
+
+## LICENSE
+[MIT](/LICENSE);
