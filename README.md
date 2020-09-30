@@ -1,4 +1,6 @@
 # DigiSchool App
+![](https://raw.githubusercontent.com/dipamsen/DigiSchool-Web/master/logo2.png)
+
 DigiSchool is a Digital Education platform for School Education.
 Created with React Native / Expo.
 
