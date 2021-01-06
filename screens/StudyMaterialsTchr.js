@@ -94,7 +94,7 @@ class StudyMaterials extends React.Component {
           }>
 
           {this.state.allResources.map((v, i) => (
-            <Card style={{ margin: 16, elevation: 10 }}>
+            <Card key={i} style={{ margin: 16, elevation: 10 }}>
               <LinearGradient
                 // Background Linear Gradient
                 colors={['#58FA66', '#92f590']}

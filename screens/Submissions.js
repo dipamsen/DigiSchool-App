@@ -102,9 +102,10 @@ export default class Submissions extends React.Component {
           }>
             <List.Subheader>{`Total Submissions: ${this.state.submissions.length}`}</List.Subheader>
             <Divider />
-            {this.state.submissions.map((v) => (
+            {this.state.submissions.map((v, i) => (
               <>
                 <List.Item
+                  key={i}
                   onPress={() => {
                     this.openResource(this.state.submissions[this.state.submissions.map(x => x.student).indexOf(v.student)].path)
                   }}

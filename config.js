@@ -1,7 +1,7 @@
-import firebase from 'firebase';
-import '@firebase/firestore';
-import '@firebase/storage';
-import '@firebase/auth';
+import * as firebase from 'firebase/app'
+import 'firebase/firestore';
+import 'firebase/storage';
+import 'firebase/auth';
 
 // Run Locally: 
 // create a file named `firebase.js`
@@ -18,6 +18,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+
+console.log((firebase.firestore))
 
 let db = firebase.firestore();
 

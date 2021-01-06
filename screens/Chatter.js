@@ -37,7 +37,7 @@ export default class Chatter extends React.Component {
   }
   showMessage = ({ item, index }) => {
     return (
-      <View style={{
+      <View key={index} style={{
         borderRadius: 8,
         borderWidth: 1,
         alignSelf: `flex-${item.from.email == auth.currentUser.email ? "end" : "start"}`,
