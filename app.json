@@ -2,7 +2,7 @@
   "expo": {
     "name": "DigiSchool",
     "slug": "digischool",
-    "version": "1..0",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
@@ -41,7 +41,8 @@
         "com.sec.android.provider.badge.permission.READ",
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
-      ]
+      ],
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.dipam.digischool"
     },
     "description": "DigiSchool is a Digital Platform for School Education.",
     "githubUrl": "https://github.com/dipamsen/DigiSchool-App"
